@@ -1,14 +1,29 @@
 <?xml version="1.0"?>
 <gpx version="1.1" creator="Xcode">
+ 
+    <wpt lat="32.0846666" lon="34.8009411">
+        <name>Hackeru</name>
+        <time>2016-05-16T11:33:59Z</time>
+    </wpt>
     
-    <wpt lat="32.0846632" lon="34.80097">
+    <wpt lat="32.0843985" lon="34.800728">
         <name>Hackeru</name>
         <time>2016-05-16T11:34:37Z</time>
     </wpt>
-   
+    
     <wpt lat="32.0841541" lon="34.7993178">
+        <name>Train</name>
+        <time>2016-05-16T11:35:37Z</time>
+    </wpt>
+    
+    <wpt lat="32.0801382" lon="34.7906679">
         <name>Train</name>
         <time>2016-05-16T11:36:37Z</time>
     </wpt>
     
+    <wpt lat="32.0846666" lon="34.8009411">
+        <name>Hackeru</name>
+        <time>2016-05-16T11:38:59Z</time>
+    </wpt>
+
 </gpx>

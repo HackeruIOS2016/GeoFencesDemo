@@ -7,16 +7,31 @@
 //
 
 import UIKit
+import CoreLocation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var locationManager = CLLocationManager()
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        initLocationManager()
+        
+        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil))
+        
+        application.cancelAllLocalNotifications()
+        
         return true
+    }
+    
+    func initLocationManager(){
+        locationManager.activityType = .Fitness
+        locationManager.requestAlwaysAuthorization()
+        locationManager.delegate = self
+        locationManager.allowsBackgroundLocationUpdates = true
     }
 
     func applicationWillResignActive(application: UIApplication) {
@@ -42,5 +57,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 
+
+}
+
+extension AppDelegate:CLLocationManagerDelegate{
+    func locationManager(manager: CLLocationManager, monitoringDidFailForRegion region: CLRegion?, withError error: NSError) {
+        //
+    }
+    
+    func locationManager(manager: CLLocationManager, didEnterRegion region: CLRegion) {
+        print("Entered Region From AppDelegate")
+        
+        let notification = UILocalNotification()
+        notification.alertBody = "Entered HackerU"
+        notification.alertTitle = "Wow."
+        notification.soundName = UILocalNotificationDefaultSoundName
+        
+        UIApplication.sharedApplication().presentLocalNotificationNow(notification)
+    }
+    
+    func locationManager(manager: CLLocationManager, didExitRegion region: CLRegion) {
+        print("Exit Region From AppDelegate")
+    }
 }
 
